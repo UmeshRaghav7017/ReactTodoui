@@ -16,12 +16,13 @@ stages:
       jobs:
           - job: npminstalljob
             steps:
-                - task: PowerShell@2
+                - task: Npm@1
                   inputs:
-                    targetType: 'inline'
-                    script: 'npm install'
+                    command: 'install'
+                    workingDir: '$(System.DefaultWorkingDirectory)'
 
-                - task: PowerShell@2
+                - task: Npm@1
                   inputs:
-                    targetType: 'inline'
-                    script: 'npm run build'
+                    command: 'custom'
+                    workingDir: 'run build'
+                    customCommand: '$(System.DefaultWorkingDirectory)'
