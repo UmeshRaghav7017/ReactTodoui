@@ -6,7 +6,7 @@ pool: karunapool
 
 
 stages:
-    - stage: Buildstage
+    - stage: checkoutstage
       jobs:
           - job: checkoutjob
             steps:
@@ -15,4 +15,16 @@ stages:
                     targetType: 'inline'
                     script: '- checkout: self'
 
+    - stage: 
+      jobs:
+          - job: npminstalljob
+            steps:
+                - task: PowerShell@2
+                  inputs:
+                    targetType: 'inline'
+                    script: 'npm install'
 
+                - task: PowerShell@2
+                  inputs:
+                    targetType: 'inline'
+                    script: 'npm run build'
