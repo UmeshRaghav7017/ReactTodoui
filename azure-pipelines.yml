@@ -25,4 +25,4 @@ stages:
                   inputs:
                     command: 'custom'
                     workingDir: 'run build'
-                    customCommand: '$(System.DefaultWorkingDirectory)'
+                    customCommand: 'C:\Users\HP\Downloads\vsts-agent-win-x64-4.264.2\_work\3\s'
