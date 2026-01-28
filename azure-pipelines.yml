@@ -2,7 +2,7 @@ name: Frontend application pipeline
 
 trigger: none
 
-pool: karunapool
+pool: KarunaPool
 
 
 stages:
@@ -10,10 +10,7 @@ stages:
       jobs:
           - job: checkoutjob
             steps:
-                - task: PowerShell@2
-                  inputs:
-                    targetType: 'inline'
-                    script: '- checkout: self'
+                - checkout: self
 
     - stage: 
       jobs:
