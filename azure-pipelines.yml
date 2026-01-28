@@ -39,3 +39,27 @@ stages:
                   inputs:
                     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
                     ArtifactName: 'drop'
+
+
+    - stage: deploy
+      jobs:
+      - deployment: DeploytoVm
+        displayName: deploy Web App
+        environment: 
+          name: 'Dev'
+          resourceName: todofrontendvm01
+          resourceType: virtualMachine
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                  - task: DownloadPipelineArtifact@2
+                    inputs:
+                      buildType: 'current'
+                      artifactName: 'todoapp'
+                      targetPath: '$(Pipeline.Workspace)'
+        
+                  - task: Bash@3
+                    inputs:
+                      targetType: 'inline'
+                      script: 'sudo cp -r * /var/www/html/'
