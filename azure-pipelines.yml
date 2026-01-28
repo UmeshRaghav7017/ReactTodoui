@@ -1,0 +1,7 @@
+name: Frontend application pipeline
+
+trigger: none
+
+pool: karunapool
+
+
