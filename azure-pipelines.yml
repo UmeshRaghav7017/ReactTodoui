@@ -24,5 +24,5 @@ stages:
                 - task: Npm@1
                   inputs:
                     command: 'custom'
-                    workingDir: 'run build'
-                    customCommand: 'C:\Users\HP\Downloads\vsts-agent-win-x64-4.264.2\_work\3\s'
+                    workingDir: '$(System.DefaultWorkingDirectory)'
+                    customCommand: 'run build'
