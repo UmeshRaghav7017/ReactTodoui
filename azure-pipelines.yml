@@ -66,11 +66,13 @@ stages:
                     inputs:
                       targetType: 'inline'
                       script: |
-                        echo "Go to artifact folder"
-                        cd $(Pipeline.Workspace)/todoapp
-
-                        echo "Stopping old files..."
-                        sudo rm -rf /var/www/html/*
-
-                        echo "Copying new build files"
-                        sudo cp -r build/* /var/www/html/
+                            echo "Going to artifact build folder"
+                            cd $(Pipeline.Workspace)/todoapp/build
+                            
+                            echo "Cleaning nginx folder"
+                            sudo rm -rf /var/www/html/*
+                            
+                            echo "Copying build files to nginx root"
+                            sudo cp -r . /var/www/html/
+                            
+                            echo "Deployment finished"
