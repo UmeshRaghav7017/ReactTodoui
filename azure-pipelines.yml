@@ -36,10 +36,11 @@ stages:
                     archiveFile: '$(Build.ArtifactStagingDirectory)/todoapp.zip'
                     replaceExistingArchive: true
 
-                - task: PublishBuildArtifacts@1
+                - task: PublishPipelineArtifact@1
                   inputs:
-                    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-                    ArtifactName: 'todoapp'
+                    targetPath: '$(Pipeline.Workspace)'
+                    artifact: 'todoapp'
+                    publishLocation: 'pipeline'
 
 
     - stage: deploy
@@ -63,4 +64,6 @@ stages:
                   - task: Bash@3
                     inputs:
                       targetType: 'inline'
-                      script: 'sudo cp -r * /var/www/html/'
+                      script: |
+                        cd $(Pipeline.Workspace)/todoapp
+                        sudo unzip -o todoapp.zip -d  /var/www/html
