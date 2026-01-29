@@ -44,10 +44,10 @@ stages:
     - stage: deploy
       jobs:
       - deployment: DeploytoVm
-        displayName: deploy Web App
+        displayName: deploy artifect to vm
         environment: 
           name: 'Dev'
-          resourceName: todofrontendvm01
+          resourceName: raghavfrontendtodovm01
           resourceType: virtualMachine
         strategy:
           runOnce:
