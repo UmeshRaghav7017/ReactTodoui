@@ -66,8 +66,11 @@ stages:
                     inputs:
                       targetType: 'inline'
                       script: |
+                        echo "Go to artifact folder"
+                        cd $(Pipeline.Workspace)/todoapp
+
                         echo "Stopping old files..."
                         sudo rm -rf /var/www/html/*
 
-                        cd $(Pipeline.Workspace)/todoapp
-                        sudo unzip -o todoapp.zip -d  /var/www/html
+                        echo "Copying new build files"
+                        sudo cp -r build/* /var/www/html/
