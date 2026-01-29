@@ -2,7 +2,8 @@ name: Frontend application pipeline
 
 trigger: none
 
-pool: KarunaPool
+pool:
+  vmImage: 'Ubuntu-latest'
 
 
 stages:
