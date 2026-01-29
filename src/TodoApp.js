@@ -71,8 +71,8 @@ function TodoApp() {
                         margin: '8px',
                     }}
                 >
-                   <img src="" alt="My Logo" />
-                    // ToDo App
+                   <img src="devopsinsiderslogo.png" alt="My Logo" />
+                     ToDo App
                 </Typography>
                 <div>
                     <TextField
