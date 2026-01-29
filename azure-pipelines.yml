@@ -1,3 +1,4 @@
+
 name: Frontend application pipeline
 
 trigger: none
@@ -65,5 +66,8 @@ stages:
                     inputs:
                       targetType: 'inline'
                       script: |
+                        echo "Stopping old files..."
+                        sudo rm -rf /var/www/html/*
+
                         cd $(Pipeline.Workspace)/todoapp
                         sudo unzip -o todoapp.zip -d  /var/www/html
